@@ -1,0 +1,27 @@
+class Solution {
+   public static int findKthPositive(int[] arr, int k) {
+        int max = Arrays.stream(arr).max().getAsInt();
+        List<Integer> list = new ArrayList<>();
+        for(int num : arr)
+        {
+            list.add(num);
+        }
+        List<Integer> res = new ArrayList<>();
+        for(int i=1;i<=max;i++)
+        {
+            if(!list.contains(i))
+            {
+                res.add(i);
+            }
+        }
+        if(res.size() >= k)
+        {
+            return res.remove(k-1);
+        }
+        for(int i=1;i<=k;i++)
+        {
+            res.add(max+i);
+        }
+        return res.remove(k-1);
+    }
+}
